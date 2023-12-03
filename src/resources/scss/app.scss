@@ -1,0 +1,21 @@
+@import "variables";
+
+* {
+    padding : 0;
+    margin: 0; 
+    box-sizing: border-box;
+}
+
+h1 { 
+    color : $red-color;
+}
+h2{
+    color: $green-color;
+}
+
+.navbar{ 
+    background-color: lightcoral;
+    border: none;
+    border-radius: 10px;
+    width: 100%;
+}
