@@ -11,7 +11,6 @@ const cn = {
     user : process.env.DB_USER,
     password : process.env.DB_PASSWORD,
     max : 30
-
 }
 
 
@@ -22,10 +21,11 @@ exports.checkConnection = async ()=> {
     try{
         c = await db.connect();
         c.done();
+
         console.log("Connect to db success")
     }
     catch (err) {
         throw err;
     }
-    
 }
+
