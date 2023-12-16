@@ -9,7 +9,6 @@ exports.signupHandler = async (req, res, next) => {
     let user; 
     try {
         user = await  User.create({Email, Username,Password, DOB, Name});
-        
     }
     catch(err) {
         return next(new HttpError("Fail to insert user", 403 ));
@@ -22,13 +21,37 @@ exports.signupHandler = async (req, res, next) => {
 }
 
 exports.signinHandler = async (req,res,next) => {
-    const email = req.body.email;
-    let user = User.getOneBy;
-    ({Email:email});
+    const {email , password} = req.body;
+    let user;
+    let error ;
+    try {
+    user = await User.getOneBy({Email:email});
     if(!user) {
-        return next (new HttpError('Not found user' , 404));
+        error = {
+            email : "The email is not exists",
+        }
     }
+    else{
+        const checkCredential = await  User.comparePassword(user.Password, password);
+        if (!checkCredential){
+            error  = {
+                password : "Bad credentials" ,
+            }
+        }
+    }
+    }
+    catch (err ){
+        return next (new HttpError(err.message, 402));
+    }
+    
+    if(error) {
+       return res.render ('signin', {
+        error ,
+        style : "auth.css"
+       });
+    }
+    req.session.authenticated = true;
     req.session.user  = user;
-    res.redirect('/users');
+    return res.redirect('/users');
 
 }

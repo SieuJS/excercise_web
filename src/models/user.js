@@ -20,12 +20,10 @@ class User extends pgDB {
         //Inserting 
         let pgConnect ;
         try {
-            console.log(adder);
             pgConnect = await client.connect();
             await pgConnect.any(`INSERT INTO $1:name($2:name) VALUES($2:csv)`, [ tableName,record]);
         }
         catch(err) {
-            console.log(err.message)
             throw err;
         }
         finally{

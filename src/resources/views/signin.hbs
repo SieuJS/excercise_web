@@ -1,22 +1,19 @@
-<div class="container mt-5">
-        <div class="row justify-content-center">
-            <div class="col-md-6">
-                <form action="/users/api/signin" method="post">
-                    <div class="form-group">
-                        <label for="email">Email address</label>
-                        <input type="email" class="form-control" id="email" name="email" required>
-                        <p class="error-message" id="email-error">{{error.email}}</p>
-                    </div>
-                    <div class="form-group">
-                        <label for="password">Password</label>
-                        <input type="password" class="form-control" id="password" name="password" required>
-                        <p class="error-message" id="password-error">{{error.password}}</p>
-                    </div>
-                    <!-- Error messages -->
-                    <p class="error-message" id="credentials-error">{{error.credentials}}</p>
-                    <p>You don't have an account ? <a href = "/users/signup">Sign up!!!</a></p>                    
-                    <button type="submit" class="btn btn-primary mt-3">Sign In</button>
-                </form>
-            </div>
+<div class="form-container">
+    <form action="/users/signin" method="post" id="signin-form">
+     <h3>LOGIN REQURE</h3>
+        <div class="form-group">
+            <label for="email">Email address</label>
+            <input type="email" class="form-control" id="email" name="email" required>
+            <p class="error-message" id="email-error">{{error.email}}</p>
         </div>
-    </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" id="password" name="password" required>
+            <p class="error-message" id="password-error">{{error.password}}</p>
+        </div>
+        <!-- Error messages -->
+        <p class="error-message" id="credentials-error">{{error.credentials}}</p>
+        <p>You don't have an account ? <a href="/users/signup">Sign up!!!</a></p>
+        <button type="submit" class="btn btn-primary mt-3">Sign In</button>
+    </form>
+</div>

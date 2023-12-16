@@ -5,20 +5,18 @@ const HttpError = require('../models/http-error');
 const {signupHandler, signinHandler} = require('../controllers/testApi')
 const {requireCreateUserName, requireCreateEmail, requirePassword, requireRePassWord,requireCreateName, requireSignin} = require('../utils/validators')
 const {handleErrors} = require('../utils/middlewares')
-
+const Categories = require('../models/categories')
 const router = express.Router();
 
 
-router.get('/' , (req, res, next) => {
+router.get('/' ,async (req, res, next) => {
     if(!req.session.authenticated){
-        res.redirect('/signin')
+        return res.redirect('/users/signin')
     }
     const {Email,Username} = req.session.user;
-    res.render('home', {
-        title : "USER PAGE",
-        style : "home.css",
-        username : Username
-    })
+    const {authenticated} = req.session;
+    
+    return res.redirect('/');
 })
 
 router.get(
@@ -47,7 +45,7 @@ router.post('/api/signup', [requireCreateUserName,                      requireC
 ,handleErrors('signup', ['email', 'username', 'name','password', 'repassword'])
 ,signupHandler);
 
-router.post('/api/signin', 
-[requireSignin],handleErrors('signin', ['password']), signinHandler);
+router.post('/signin', 
+[requirePassword],handleErrors('signin', ['password']), signinHandler);
 
 module.exports = router;

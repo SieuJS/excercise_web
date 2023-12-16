@@ -44,19 +44,8 @@ module.exports = {
         }
         return true;
     }),
-    requireSignin : body ('password')
+    validPassword : body ('password')
     .trim()
-    .isLength({min: 6, max : 40})
-    .withMessage('Must be from 6 to 40 characters')
-    .custom(async (password, {req})=> {
-        const {email : Email} = req.body;
-        let found = await User.getOneBy({Email});
-        if(!found) {
-            throw new Error("Email not exists");
-        }
-        else if(!(await User.comparePassword(found.Password, password))){
-            throw new Error ("Password in correct");
-        }
-        return true;
-    })
+    .isLength({min : 5, max : 40})
+    .withMessage("Must be 5-40 charaters")
 }

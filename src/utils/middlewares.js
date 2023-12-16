@@ -16,7 +16,10 @@ module.exports = {
                     return res.json({errors,...data})
                 }
                 else {
-                    return res.render(template,{error : refactErr})
+                    console.log({...refactErr})
+
+
+                    return res.render(template,{error  :{...refactErr} , style : "auth.css"})
                 }
             }
             else {

@@ -1,0 +1,54 @@
+<div class="container-xl" id="content-container">
+    <nav class="navbar">
+        <a href="" class="nav-item active">Home</a>
+        <a href="" class="nav-item">Categories</a>
+        <a href="" class="nav-item">About</a>
+        <a href="" class="nav-item">Pages</a>
+        <a href="" class="nav-item">Blog</a>
+        <a href="" class="nav-item">Contact</a>
+    </nav>
+
+    <!-- hero section -->
+
+    <div id="hero-slider" class="carousel slide">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#hero-slider" data-bs-slide-to="0" class="active" aria-current="true"
+                aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#hero-slider" data-bs-slide-to="1" class=""
+                aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#hero-slider" data-bs-slide-to="2" class=""
+                aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item banners active" id="slide-1">
+            </div>
+            <div class="carousel-item banners" id="slide-2"></div>
+            <div class="carousel-item banners" id="slide-3"></div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#hero-slider" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#hero-slider" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+    <!-- best seller -->
+    <section class="shop_section">
+        <div class="container-lg p-0" id="lastest-container">
+            <div class="heading">
+                <h2>
+                    Latest Products
+                </h2>
+            </div>
+            {{>products-card}}
+            <div class="btn-box">
+                <a href="">
+                    View All Products
+                </a>
+            </div>
+        </div>
+    </section>
+</div>

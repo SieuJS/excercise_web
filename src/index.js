@@ -4,7 +4,8 @@ require('dotenv').config();
 const {engine} = require('express-handlebars')
 const session = require('express-session')
 
-
+const Categories = require('./models/categories')
+const Products = require('./models/products')
 const HttpError = require('./models/http-error');
 const UserRouter = require('./routes/user.routes');
 const {checkConnection} = require('./database/connect');
@@ -34,10 +35,22 @@ app.use(session ({
 }))
 
 
+app.use(express.static('/public'));
+
 // ROUTE
 app.get('/' , async (req,res,next) => {
-    // check db connection : 
-    res.render('home', {title : "HOME PAGE"})
+    // check db connection :
+    const categories =  await Categories.getAll();
+    req.session.authenticated = true;
+    
+    const top8 = await Products.getNProducts(8);
+
+    return res.render('home', {title : "HOME PAGE" , style : "home.css" , authenticated : req.session.authenticated , 
+    user : {
+        username : "Sieu"
+    },
+    products : top8 
+    })
 })
 
 app.use('/users',UserRouter);

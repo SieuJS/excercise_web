@@ -1,21 +1,30 @@
- <nav class="navbar navbar-expand-lg navbar-light container-fluid">
-  <a class="navbar-brand mx-2 px-2 btn btn-primary text-light" href="#">{{title}}</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" href="/">Home</a>
-      </li>
-      {{#unless authenticated}}
-      <li class="nav-item">
-        <a class="nav-link" href="/users/signin">Login</a>
-      </li>
-      {{/unless}}
-      <li class="nav-item">
-        <a class="nav-link" href="/users">Users</a>
-      </li>
-    </ul>
+<div class="container-lg d-flex justify-content-between">
+  <div id="logo-page">
+    <img src="/css/assets/1922273.png" alt="" id="logo-img" />
+    <div class="container-fluid d-flex align-items-center" id="search-container">
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
   </div>
-</nav>
+  <div class="util d-flex justify-content-between align-items-center gap-4">
+    <ul class="navbar-nav flex-row gap-3 justify-content-evenly align-items-center">
+      <li class="nav-item"><a href="/faq" class="nav-link">FAQ</a></li>
+      <li class="nav-item"><a href="/order-tracking" class="nav-link">Track order</a></li>
+      <li class="nav-item"><a href="/cart" class="nav-link"><i class="fa-solid fa-cart-shopping"></i></a></li>
+    </ul>
+
+    {{#if authenticated}}
+    <div class="user-frame">
+                <img src="/images/gifts.png" alt="" srcset="" class = "avatar">
+              <p class="user-name m-0 text-center">Hi {{user.username}}</p>
+            </div>
+    {{else}}
+    <a href="/users/signin" class="btn btn-outline-danger">Sign In</a>
+
+    {{/if}}    
+
+
+  </div>
+</div>

@@ -1,0 +1,154 @@
+body > * {
+    margin: 0;
+    padding : 0;
+    box-sizing: border-box;    
+    font-family: 'Libre Baskerville', serif;
+    font-family: 'Oswald', sans-serif;
+    font-family: 'Roboto', sans-serif;
+    font-family: 'Roboto Condensed', sans-serif;
+    --primary : #F4ACB7;
+    --secondary : #FFCAD4;
+    --light : #dae1da;
+    --platinum : #E6E8E6;
+    --dark : #9D8189;
+    font-size: medium;
+}
+
+/* header section */
+
+header { 
+    display : flex;
+    justify-content: space-between;
+    background-color: #ffff;
+}
+
+header >div> #logo-page{
+    display: flex;
+    justify-content: space-between;
+}
+
+header > div > #logo-page > #logo-img {
+    height: 5rem;
+    padding : 1rem;
+    padding-left: 0;
+}
+
+header > div > #logo-page > #search-container {
+    width: 100%;
+}
+
+header > .util{
+    padding-top : 1.5rem;
+}
+
+header > div > div > .user-frame{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap : 1rem;
+}
+
+header > div > div > .user-frame > .avatar{
+    height: 3rem;
+    margin-left: 1rem;
+    width: 3rem;
+    background-color: #9D8189;
+    border-radius: 70%;
+}
+
+/* Content section  */
+
+#content {
+    background-color: var(--platinum);
+}
+
+#content > #content-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap : 1rem;
+}
+
+/* nav bar section */
+
+#content > #content-container > nav { 
+    
+    width: 50%;
+}
+
+#content > #content-container> nav > .active {
+    text-decoration: underline;
+}
+
+#content > #content-container> nav > a {
+    text-decoration: none;
+    color : black;
+    font-weight: bolder;
+}
+ 
+
+/* hero sectio */
+
+/* carousel  */
+
+#content > #content-container > #hero-slider{
+    width: 80%;
+    height: 20rem;
+    background-color: var(--dark);
+    margin-top: 0.5rem;
+}
+
+#content > #content-container > #hero-slider > .carousel-inner
+> .banners {
+    height: 20rem;
+}
+
+#content > #content-container > #hero-slider > .carousel-inner
+> #slide-1 {
+    background : url(./assets/banner1.png);
+    object-fit: cover;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+#content > #content-container > #hero-slider > .carousel-inner
+> #slide-2 {
+    background : url(./assets/banner2.jpg);
+    object-fit: fill;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+#content > #content-container > #hero-slider > .carousel-inner
+> #slide-3 {
+    background : url(./assets/banner3.png);
+    object-fit: cover;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+
+/* best-seller section */
+
+#content > #content-container > #best-sellers-container {
+    width: 80%;
+}
+
+#content > #content-container > #best-sellers-container > h2 {
+    text-decoration:dotted;
+    color : var(--primary)
+}
+
+/* slider */
+
+#content > #content-container > .shop_section > #lastest-container {
+    width: 80%;
+}
+
+#content > #content-container > .shop_section > #lastest-container > .heading > h2 {
+    font-weight: bolder;
+    color: var(--primary); 
+    text-align: center;
+}
+
+
