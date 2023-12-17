@@ -45,7 +45,7 @@ exports.signinHandler = async (req,res,next) => {
     }
     
     if(error) {
-       return res.render ('signin', {
+       return res.render ('auth', {
         error ,
         style : "auth.css"
        });

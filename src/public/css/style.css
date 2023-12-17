@@ -27,7 +27,7 @@ header >div> #logo-page{
     justify-content: space-between;
 }
 
-header > div > #logo-page > #logo-img {
+header > div > #logo-page > a >#logo-img {
     height: 5rem;
     padding : 1rem;
     padding-left: 0;

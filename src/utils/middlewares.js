@@ -2,7 +2,7 @@ const {validationResult} = require('express-validator')
 const {getError}= require('../utils/helper')
 
 module.exports = {
-    handleErrors(template, errParams,dataCb) {
+    handleErrors(template, errParams,mode,dataCb) {
         return async (req, res,next) => {
             let errors = validationResult(req);
             let refactErr;
@@ -16,15 +16,15 @@ module.exports = {
                     return res.json({errors,...data})
                 }
                 else {
-                    console.log({...refactErr})
-
-
-                    return res.render(template,{error  :{...refactErr} , style : "auth.css"})
+                     return res.render(template,{error  :{...refactErr} , style : "auth.css", mode} )
                 }
             }
             else {
                 return next();
             }
         }
+    },
+    isLoggedIn(req,res,next) {
+        req.session.authenticated ? next() : res.sendStatus(401);
     }
 }

@@ -1,6 +1,7 @@
-<div class="container-lg d-flex justify-content-between">
+
+<div class="container-xl d-sm-none d-md-flex d-lg-flex justify-content-between">
   <div id="logo-page">
-    <img src="/css/assets/1922273.png" alt="" id="logo-img" />
+    <a href="http://localhost:3000/"><img src="/css/assets/1922273.png" alt="" id="logo-img" /></a>
     <div class="container-fluid d-flex align-items-center" id="search-container">
       <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -10,7 +11,14 @@
   </div>
   <div class="util d-flex justify-content-between align-items-center gap-4">
     <ul class="navbar-nav flex-row gap-3 justify-content-evenly align-items-center">
-      <li class="nav-item"><a href="/faq" class="nav-link">FAQ</a></li>
+      <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Categories</a>
+                <ul class="dropdown-menu">
+                  {{#each categories}}
+                    <li><a href="/categories/{{CatID}}/products" class="dropdown-item">{{CatName}}</a></li>
+                  {{/each}}
+                </ul>
+              </li>
       <li class="nav-item"><a href="/order-tracking" class="nav-link">Track order</a></li>
       <li class="nav-item"><a href="/cart" class="nav-link"><i class="fa-solid fa-cart-shopping"></i></a></li>
     </ul>
@@ -18,13 +26,11 @@
     {{#if authenticated}}
     <div class="user-frame">
                 <img src="/images/gifts.png" alt="" srcset="" class = "avatar">
-              <p class="user-name m-0 text-center">Hi {{user.username}}</p>
-            </div>
+              <p class="user-name m-0 text-center">Hi {{user.Username}}</p>
+              <a href="http://localhost:3000/users/signout">sign out</a>
+    </div>
     {{else}}
-    <a href="/users/signin" class="btn btn-outline-danger">Sign In</a>
-
+    <a href="/users/auth" class="btn btn-outline-danger">Sign In</a>
     {{/if}}    
-
-
   </div>
 </div>

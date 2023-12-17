@@ -11,7 +11,7 @@ const router = express.Router();
 
 router.get('/' ,async (req, res, next) => {
     if(!req.session.authenticated){
-        return res.redirect('/users/signin')
+        return res.redirect('/users/auth')
     }
     const {Email,Username} = req.session.user;
     const {authenticated} = req.session;
@@ -20,32 +20,33 @@ router.get('/' ,async (req, res, next) => {
 })
 
 router.get(
-    '/signin', (req,res,next) => {
-        res.render('signin', {
+    '/auth', (req,res,next) => {
+        res.render('auth', {
             title : "SIGN IN",
             style : "auth.css",
         })
     }
 )
 
-router.get('/signup', (req,res,next) => {
-    res.render('signup', {
-        title : "SIGN UP",
-        style : "auth.css"
-    })
+
+router.get('/signout' , (req,res, next) => {
+    req.session.authenticated = false;
+    req.session.user = undefined;
+    return res.redirect("/");
+
 })
 
 
 // For api testing 
-router.post('/api/signup', [requireCreateUserName,                      requireCreateEmail,
+router.post('/signup', [requireCreateUserName,                      requireCreateEmail,
     requireCreateName,
     requirePassword,
     requireRePassWord
 ]
-,handleErrors('signup', ['email', 'username', 'name','password', 'repassword'])
+,handleErrors('auth', ['email', 'username', 'name','password', 'repassword'], "signup")
 ,signupHandler);
 
 router.post('/signin', 
-[requirePassword],handleErrors('signin', ['password']), signinHandler);
+[requirePassword],handleErrors('auth', ['password'], "signin"), signinHandler);
 
 module.exports = router;
