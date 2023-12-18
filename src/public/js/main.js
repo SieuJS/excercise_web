@@ -29,14 +29,14 @@ if(body.classList.contains("dark")){
 
 // sign in
 $(document).ready(function(){
-  console.log($('#define-modal').html());
+  console.log($('#define-modal').html())
   if($('#define-modal').html() === "signup"){
     openRegisterModal();
   }
   else {
     openLoginModal();
   }
-  $('#define-modal').html('')
+  $('#define-modal').html('');
 });
 
 
@@ -49,7 +49,15 @@ $('.loginBox').fadeOut('fast',function(){
       $('.register-footer').fadeIn('fast');
   });
   $('.modal-title').html('Register with');
+  if($('#define-modal').html() === '') {
+    $('.error').removeClass('alert alert-danger').html('');
+    $('.error-message').html('');
+  }
+
+
 }); 
+
+
 }
 function showLoginForm(){
 $('#loginModal .registerBox').fadeOut('fast',function(){
@@ -59,12 +67,18 @@ $('#loginModal .registerBox').fadeOut('fast',function(){
   });
   
   $('.modal-title').html('Login with');
+  if($('#define-modal').html() === '') {
+    $('.error').removeClass('alert alert-danger').html('');
+    $('.error-message').html('');
+  }
+
 });       
-$('.error').removeClass('alert alert-danger'); 
+
 }
 
 function openLoginModal(){
 showLoginForm();
+console.log($('.error').html());
 if( $('.error').html() !== ""){
   shakeModal();
 }  
@@ -72,10 +86,10 @@ setTimeout(function(){
   $('#loginModal').modal('show');  
   
 }, 230);
-setTimeout(() => {
+if($('#define-modal').html() === '') {
   $('.error').removeClass('alert alert-danger').html('');
-$('.error-message').html('');
-},15000)
+    $('.error-message').html('');
+}
 
 
 }
@@ -88,10 +102,7 @@ setTimeout(function(){
   $('#loginModal').modal('show');    
 }, 230);
 
-setTimeout(() => {
-  $('.error').removeClass('alert alert-danger').html('');
-$('.error-message').html('');
-},15000)
+
 
 }
 

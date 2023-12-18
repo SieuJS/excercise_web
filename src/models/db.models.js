@@ -26,13 +26,30 @@ module.exports = class Db {
       .catch(err => {throw err}) 
 
   }
-  async getOneBy(filter, tb) {
+
+  async Create(adder) {
+    let c ;
+    let proc
+    try {
+      c = await pgClient.connect();
+      proc =  await client.connect();
+      await pgConnect.any(`INSERT INTO $1:name($2:name) VALUES($2:csv)`, [ this.tb,adder]);
+    }
+    catch(err) {
+      throw err;
+    }
+    finally{
+      c.done();
+    }
+  }
+
+  async getOneBy(filter) {
     let c;
     let foundUser;
     try {
       c = await pgClient.connect();
       foundUser = await c.oneOrNone(
-        `select * from $1:name where ($2:name) =  ($2:csv) LIMIT 1`,
+        `select * from $1:name where ($2:name) =  ($2:csv)`,
         [this.tb, filter]
       );
     } catch (err) {
@@ -42,4 +59,5 @@ module.exports = class Db {
     }
     return foundUser;
   }
+
 };

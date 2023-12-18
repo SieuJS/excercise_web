@@ -35,6 +35,8 @@ class Products extends pgDB {
         }
         return records;
     }
+
+    
 }
 
-module.exports = Products;
+module.exports = new Products('Products');

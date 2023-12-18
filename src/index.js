@@ -79,9 +79,7 @@ app.get("/test",isLoggedIn, async (req, res, next) => {
     title: "HOME PAGE",
     style: "home.css",
     authenticated: req.session.authenticated,
-    user: {
-      username: "Sieu",
-    },
+    user: req.session.user,
     products: top8,
     categories,
   });

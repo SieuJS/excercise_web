@@ -47,7 +47,8 @@ exports.signinHandler = async (req,res,next) => {
     if(error) {
        return res.render ('auth', {
         error ,
-        style : "auth.css"
+        style : "auth.css",
+        mode : "signin"
        });
     }
     req.session.authenticated = true;

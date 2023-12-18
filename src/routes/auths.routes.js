@@ -18,6 +18,12 @@ router.get(
     }),
     function (req,res) {
       req.session.authenticated = true;
+      let user = req.user;
+      req.session.user = {
+        id : user.id,
+        Email : user.emails[0].value,
+        Username : user.displayName
+      }
       res.redirect('/test')
     }
   );

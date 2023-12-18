@@ -17,9 +17,15 @@ passport.use(
 )
 
 passport.serializeUser((user,done) => {
-    done(null,user)
+    const formatUser = {
+        id : user.id,
+        Email : user.emails[0].value,
+        Username : user.displayName
+    }
+    done(null,formatUser)
 })
 
 passport.deserializeUser((user,done) => {
-    done(null,user);
+    
+    done(null,user)
 })
